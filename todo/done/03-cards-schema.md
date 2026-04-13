@@ -35,6 +35,6 @@
 - Reading a JSONL with `schema_version: 999` raises a clear error
 
 **Done when:**
-- [ ] Every field from the plan is in the dataclass
-- [ ] Round-trip tests pass for all three card_types
-- [ ] Schema version mismatch raises with a useful message
+- [x] Every field from the plan is in the dataclass
+- [x] Round-trip tests pass for all three card_types
+- [x] Schema version mismatch raises with a useful message

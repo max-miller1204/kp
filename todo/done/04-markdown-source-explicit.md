@@ -26,5 +26,5 @@
 - Running twice produces identical card IDs (idempotent)
 
 **Done when:**
-- [ ] 3 tests pass
-- [ ] Cards include `source_line` pointing at the right line
+- [x] 3 tests pass
+- [x] Cards include `source_line` pointing at the right line

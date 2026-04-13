@@ -1,14 +1,14 @@
-# 20 - image labeled questions
+# 18 - image labeled questions
 
 **Goal:** For diagrams with labeled regions, generate text questions about specific labeled parts. NO masking pipeline — the full image stays on the card.
-**Depends on:** 12
+**Depends on:** 09
 
 **In scope:**
 - Extend `kp/sources/image.py` to detect labeled regions via Claude vision ("what labels/arrows/annotations are visible, and what do they point to?")
 - For each label, generate a card with:
   - Front: full image + "What structure is indicated by the arrow in the upper-left?" (or similar positional phrasing)
   - Back: the label / explanation
-- Card `card_type` stays `basic` or goes to `occlusion` — decide based on whether the fallback Image Occlusion Enhanced addon integration happens
+- Card `card_type` stays `basic` (or goes to `occlusion` only if the fallback addon integration happens)
 
 **Out of scope:**
 - Rolling our own bounding-box / masking CV pipeline — EXPLICITLY REJECTED. It's a disappointment factory.
@@ -20,9 +20,11 @@
 3. Test with a real labeled diagram fixture
 
 **Test:**
-- Process a labeled anatomy or architecture diagram fixture
-- Verify N text-question cards (N = number of labels) with the full image on the front
-- Cards make sense to study (eyeball test)
+
+*Realism check (required):*
+- Process a real labeled diagram (anatomy, architecture, system diagram) from your own notes
+- Verify N text-question cards where N = number of labels you'd recognize
+- Cards are actually useful to study (eyeball test — would YOU want to drill these?)
 
 **Done when:**
 - [ ] Real diagram produces cards you'd actually want to study

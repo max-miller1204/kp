@@ -1,7 +1,7 @@
-# 22 - mcp (writes)
+# 19 - mcp (writes)
 
 **Goal:** Add write tools to the MCP server, using an append-only `inbox/` pattern to avoid concurrent-session merge conflicts.
-**Depends on:** 21 (and after you've lived with read-only MCP for at least a week)
+**Depends on:** 16 (and after you've lived with read-only MCP for at least a week)
 
 **In scope:**
 - `propose_card(front, back, source)` tool — writes a single card to `inbox/cards/<timestamp>-<uuid>.jsonl`
@@ -9,7 +9,7 @@
 - `inbox/` tree is append-only. Writes NEVER touch `cards.jsonl` or the main vault directly.
 - New `kp reconcile` command:
   - Reads everything in `inbox/`
-  - Feeds card proposals through the normal review queue (slice 09)
+  - Feeds card proposals through the normal review queue (slice 07)
   - Folds inbox notes into the vault after user confirmation
   - Archives reconciled files to `inbox/processed/<date>/`
 - Concurrency: timestamped + UUID'd filenames mean two simultaneous writes never collide
@@ -22,12 +22,19 @@
 1. Add write tools to server
 2. Implement `kp reconcile`
 3. Concurrency test: two parallel sessions writing simultaneously
-4. Manual test from Claude Desktop
+4. Manual test from Claude Desktop + Claude Code
 
 **Test:**
-- From two parallel Claude sessions, call `propose_card` simultaneously → both land in `inbox/cards/` with distinct filenames, zero conflicts
-- `kp reconcile` → both proposals flow through review queue → approved cards reach Anki
-- Archive moves reconciled files to `processed/`
+
+*Unit:*
+- Two simultaneous writes produce distinct filenames, no race conditions
+- `kp reconcile` correctly routes proposals to the review queue, notes to the vault
+- Reconciled files land in `processed/` correctly
+
+*Realism check (required):*
+- From two parallel real Claude sessions, call `propose_card` simultaneously → both land in `inbox/cards/` with distinct filenames
+- Run `kp reconcile` → both proposals flow through review into Anki
+- Use it in a real learning conversation to propose cards from inside a chat
 
 **Done when:**
 - [ ] Parallel write test passes

@@ -27,5 +27,5 @@
 - `media: [foo.png]` → `foo.png` ends up in `<vault>/generated/media/foo.png`
 
 **Done when:**
-- [ ] 4 tests pass
-- [ ] Generated notes resolve their `source:` path when opened in Obsidian
+- [x] 4 tests pass
+- [x] Generated notes resolve their `source:` path when opened in Obsidian

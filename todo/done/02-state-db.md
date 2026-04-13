@@ -27,6 +27,6 @@
 - DB path respects `$XDG_DATA_HOME` override via monkeypatch
 
 **Done when:**
-- [ ] All state tests pass
-- [ ] `kp orphans` works against a temp DB + temp source tree
-- [ ] State DB is in `.gitignore` (or lives outside repo entirely)
+- [x] All state tests pass
+- [x] `kp orphans` works against a temp DB + temp source tree
+- [x] State DB is in `.gitignore` (or lives outside repo entirely)
