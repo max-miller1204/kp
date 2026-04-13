@@ -1,0 +1,5 @@
+vault_path = "~/ObsidianVault"
+knowledge_repo_path = "~/knowledge"
+anki_deck = "KP::Fixture"
+claude_api_key_env = "FIXTURE_API_KEY"
+enabled_sources = ["markdown", "image"]

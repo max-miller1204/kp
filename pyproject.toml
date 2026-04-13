@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kp"
+version = "0.0.1"
+description = "Knowledge pipeline: GitHub -> AI -> Obsidian + Anki"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+kp = "kp.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["kp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
